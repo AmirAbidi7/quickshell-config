@@ -15,7 +15,7 @@ Singleton {
   property color buttonActiveBg: "#FFF000"
   property color pressed: "#171515"
 
-  property string fontFamily: "Maple Mono NF CN"
+  property string fontFamily: "Linux Biolinum"
 
   property int height: 40
   property int textSize: 16

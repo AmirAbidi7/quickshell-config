@@ -3,12 +3,12 @@ import Quickshell
 import QtQuick
 
 Singleton {
-    property string time: {
-        Qt.formatDateTime(clock.date, "ddd MMM d hh:mm AP");
-    }
+  property string time: {
+    Qt.formatDateTime(clock.date, "ddd MMM d hh:mm AP");
+  }
 
-    SystemClock {
-        id: clock
-        precision: SystemClock.Minutes
-    }
+  SystemClock {
+    id: clock
+    precision: SystemClock.Minutes
+  }
 }

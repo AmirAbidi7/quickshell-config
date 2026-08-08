@@ -3,7 +3,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import "Memory"
-import ".."
+import "../.."
 import "Power"
 import "Wifi"
 import "Battery"
@@ -12,10 +12,11 @@ import "Audio"
 import "Tray"
 import "../../Components/"
 
-SlantedContainer {
+Slice {
   id: root
   Layout.preferredWidth: flexboxLayout.implicitWidth - 2
   fillColor: Style.bg
+  mode: "lean"
   skew: -8
 
   FlexboxLayout {

@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "../.."
+import "../../.."
 import "../../../Components"
 
-SlantedContainer {
+Slice {
   id: root
+  mode: "lean"
   Layout.preferredWidth: label.implicitWidth + 24
   Layout.fillHeight: true
   fillColor:  "transparent"

@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "../.."
+import "../../.."
 import "../../../Components"
 
-SlantedContainer {
+Slice {
   id: root
+  mode: "lean"
   Layout.preferredWidth: label.implicitWidth + 24
   fillColor:  "transparent"
   Layout.fillHeight: true
@@ -20,7 +21,7 @@ SlantedContainer {
   Text {
     id: label
     anchors.centerIn: parent
-    text: AudioInfo.icon() + " " + Math.round(AudioInfo.volume * 100) + "%"
+    text: AudioInfo.icon() + "  " + Math.round(AudioInfo.volume * 100) + "%"
     color: hoverEffect.progress > 0.5 ?  Style.textHover :AudioInfo.muted ? Style.inactive : Style.text
     font {
       pixelSize: Style.textSize

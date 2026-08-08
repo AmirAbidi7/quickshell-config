@@ -3,13 +3,14 @@ import Quickshell.Widgets
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
-import ".."
+import "../.."
 import "../../Components"
 
-SlantedContainer {
+Slice {
   id: root
   Layout.preferredWidth: flexboxLayout.implicitWidth - 2
   skew: 16
+  mode: "lean"
 
   fillColor: Style.bg
 
@@ -21,10 +22,11 @@ SlantedContainer {
     Repeater {
       model: 5
 
-      SlantedContainer {
+      Slice {
         id: button
         required property int index
         skew: root.skew
+        mode: "lean"
 
         property var ws: Hyprland.workspaces.values.find(w => w.id == (index + 1))
         property bool isActive: Hyprland.focusedWorkspace?.id == (index + 1)

@@ -1,5 +1,5 @@
 import QtQuick
-import "../Navbar"
+import ".."
 
 Item {
   id: hoverReveal
@@ -27,11 +27,12 @@ Item {
     height: hoverReveal.height * hoverReveal.progress
     clip: true
 
-    SlantedContainer {
+    Slice {
       x: over
       width: hoverReveal.width
       height: hoverReveal.height
       skew: hoverReveal.skew
+      mode: "lean"
       fillColor: hoverReveal.fillColor
     }
   }

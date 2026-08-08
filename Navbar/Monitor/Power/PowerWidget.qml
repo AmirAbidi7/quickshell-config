@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "../.."
+import "../../.."
 import "../../../Components"
 
-SlantedContainer {
+Slice {
   id: powerButton
+  mode: "lean"
   Layout.fillHeight: true
   Layout.preferredWidth: icon.implicitWidth + 24
   fillColor:  "transparent"
@@ -20,7 +21,7 @@ SlantedContainer {
   Text {
     id: icon
     anchors.centerIn: parent
-    anchors.horizontalCenterOffset: powerButton.skew / 2
+    // anchors.horizontalCenterOffset: powerButton.skew / 2
     text: ""
     color: hoverReveal.progress > 0.2 ? Style.textHover : Style.text
 

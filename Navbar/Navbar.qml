@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
+import ".."
 import "Workspaces"
 import "Clock"
 import "Monitor"

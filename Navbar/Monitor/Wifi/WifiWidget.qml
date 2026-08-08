@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import "../.."
+import "../../.."
 import "../../../Components"
 
-SlantedContainer {
+Slice {
   id: root
+  mode: "lean"
   Layout.preferredWidth: label.implicitWidth + 24
   Layout.fillHeight: true
   fillColor:  "transparent"
@@ -20,8 +21,8 @@ SlantedContainer {
   Text {
     id: label
     anchors.centerIn: parent
-    anchors.horizontalCenterOffset: root.skew / 2
-    text: WifiInfo.isConnected ? "󰤨 " + Math.round(WifiInfo.signalStrength) + "%" : "󰤭"
+    // anchors.horizontalCenterOffset: root.skew / 2
+    text: WifiInfo.isConnected ? "󰤨   " + Math.round(WifiInfo.signalStrength) + "%" : "󰤭"
     color: hoverReveal.progress > 0.2 ? Style.textHover : (  WifiInfo.isConnected ? Style.text : Style.inactive)
 
     font {

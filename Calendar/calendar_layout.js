@@ -114,3 +114,4 @@ function getCalendarLayout(dateObject, highlight) {
   }
   return calendar;
 }
+// console.log(getCalendarLayout(getDateInXMonthsTime(0), true));

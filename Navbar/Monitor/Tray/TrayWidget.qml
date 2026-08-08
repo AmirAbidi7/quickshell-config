@@ -2,15 +2,16 @@ import Quickshell
 import Quickshell.Services.SystemTray
 import QtQuick
 import QtQuick.Layouts
-import "../.."
+import "../../.."
 import "../../../Components"
 
-SlantedContainer {
+Slice {
   id: trayRoot
   Layout.preferredWidth: row.implicitWidth + 24
   Layout.fillHeight: true
   fillColor: "transparent"
   visible: repeater.count > 0
+  mode: "lean"
 
   HoverReveal {
     anchors.fill: parent
@@ -28,13 +29,14 @@ SlantedContainer {
       id: repeater
       model: SystemTray.items
 
-      SlantedContainer {
+      Slice {
         id: appContainer
         required property var modelData
         width: 16
         height: 16
         fillColor: "transparent"
         skew: trayRoot.skew
+        mode: "lean"
 
         Image {
           anchors.centerIn: parent
