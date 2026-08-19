@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Shapes
+import "../"
 
 Shape {
     id: root
@@ -7,6 +8,11 @@ Shape {
     property alias fillColor: path.fillColor
     property real skew: 8
     property string mode: "box" // "box" | "lean" | "flare" | "cut"
+
+    property bool shadowEnabled: false
+    property real shadowOffsetX: 0
+    property real shadowOffsetY: 0
+    property color shadowColor: Style.bgHover
 
     // Per-corner overrides. Leave NaN to fall back to the mode's default.
     // positive = cuts inward, negative = flares outward
@@ -54,6 +60,47 @@ Shape {
         default:
             return 0;
         }
+    }
+
+    ShapePath {
+        id: shadowPath
+        strokeWidth: -1
+        fillColor: root.shadowEnabled ? root.shadowColor : "transparent"
+
+        startX: root.tlX + root.shadowOffsetX
+        startY: root.shadowOffsetY
+        PathLine {
+            x: root.width - root.trX + root.shadowOffsetX
+            y: root.shadowOffsetY
+        }                    // top edge
+        PathLine {
+            x: root.width + root.shadowOffsetX
+            y: root.trY + root.shadowOffsetY
+        }                        // top-right cut
+        PathLine {
+            x: root.width + root.shadowOffsetX
+            y: root.height - root.brY + root.shadowOffsetY
+        }          // right edge
+        PathLine {
+            x: root.width - root.brX + root.shadowOffsetX
+            y: root.height + root.shadowOffsetY
+        }          // bottom-right cut
+        PathLine {
+            x: root.blX + root.shadowOffsetX
+            y: root.height + root.shadowOffsetY
+        }                       // bottom edge
+        PathLine {
+            x: root.shadowOffsetX
+            y: root.height - root.blY + root.shadowOffsetY
+        }                   // bottom-left cut
+        PathLine {
+            x: root.shadowOffsetX
+            y: root.tlY + root.shadowOffsetY
+        }                                 // left edge
+        PathLine {
+            x: root.tlX + root.shadowOffsetX
+            y: root.shadowOffsetY
+        }                                 // top-left cut
     }
 
     ShapePath {

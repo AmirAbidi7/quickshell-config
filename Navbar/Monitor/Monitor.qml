@@ -13,50 +13,50 @@ import "Tray"
 import "../../Components/"
 
 Slice {
-  id: root
-  Layout.preferredWidth: flexboxLayout.implicitWidth - 2
-  fillColor: Style.bg
-  mode: "lean"
-  skew: -8
+    id: root
+    Layout.preferredWidth: flexboxLayout.implicitWidth - 2
+    fillColor: Style.bg
+    mode: "lean"
+    skew: -Style.navbarSkew
 
-  FlexboxLayout {
-    id: flexboxLayout
-    anchors.centerIn: parent
-    height: parent.height
-    gap: -1
+    FlexboxLayout {
+        id: flexboxLayout
+        anchors.centerIn: parent
+        height: parent.height
+        gap: -1
 
-    TrayWidget {
-      Layout.fillWidth: true
-      skew: root.skew
-    }
-    AudioWidget {
-      Layout.fillWidth: true
-      skew: root.skew
-    }
+        TrayWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
+        AudioWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
 
-    BluetoothWidget {
-      Layout.fillWidth: true
-      skew: root.skew
-    }
+        BluetoothWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
 
-    MemWidget {
-      Layout.fillWidth: true
-      skew: root.skew
-    }
+        MemWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
 
-    WifiWidget {
-      Layout.fillWidth: true
-      skew:root.skew
-    }
+        WifiWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
 
-    BatteryWidget {
-      Layout.fillWidth: true
-      skew: root.skew
-    }
+        BatteryWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
 
-    PowerWidget {
-      Layout.fillWidth: true
-      skew: root.skew
+        PowerWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
     }
-  }
 }
