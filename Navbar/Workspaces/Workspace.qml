@@ -14,6 +14,49 @@ Slice {
 
     fillColor: Style.bg
 
+    readonly property int activeIndex: {
+        const id = Hyprland.focusedWorkspace?.id ?? -1
+        return id >= 1 && id <= 5 ? id - 1 : -1
+    }
+
+    readonly property real indicatorX: {
+        if (root.activeIndex < 0) return 0
+        const children = flexboxLayout.children
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i]
+            if (typeof child.index === "number" && child.index === root.activeIndex) {
+                return child.mapToItem(root, 0, 0).x
+            }
+        }
+        return 0
+    }
+
+    Slice {
+        id: indicator
+        skew: root.skew
+        mode: "lean"
+
+        width: 32
+        height: parent.height
+        x: root.indicatorX
+        opacity: root.activeIndex >= 0 ? 1 : 0
+
+        fillColor: Style.buttonActiveBg
+
+        Behavior on x {
+            NumberAnimation {
+                duration: 180
+                easing.type: Easing.OutCubic
+            }
+        }
+
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 100
+            }
+        }
+    }
+
     FlexboxLayout {
         id: flexboxLayout
         anchors.fill: parent
@@ -33,13 +76,7 @@ Slice {
 
                 Layout.preferredWidth: 32
                 Layout.fillHeight: true
-                fillColor: isActive ? Style.buttonActiveBg : (ma.containsMouse ? Style.buttonHoverBg : Style.buttonBg)
-
-                Behavior on fillColor {
-                    ColorAnimation {
-                        duration: 100
-                    }
-                }
+                fillColor: !button.isActive && ma.containsMouse ? Style.buttonHoverBg : "transparent"
 
                 Text {
                     anchors.centerIn: parent
