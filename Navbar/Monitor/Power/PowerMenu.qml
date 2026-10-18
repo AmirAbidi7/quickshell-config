@@ -5,7 +5,7 @@ import "../../.."
 
 PopupWindow {
     id: root
-    width: 162
+    implicitWidth: 162
     implicitHeight: columnLayout.implicitHeight + 28
     grabFocus: true
     color: "transparent"

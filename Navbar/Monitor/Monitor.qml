@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import "Memory"
 import "../.."
 import "Power"
+import "Layout"
 import "Wifi"
 import "Battery"
 import "Bluetooth"
@@ -26,6 +27,10 @@ Slice {
         gap: -1
 
         TrayWidget {
+            Layout.fillWidth: true
+            skew: root.skew
+        }
+        LayoutWidget {
             Layout.fillWidth: true
             skew: root.skew
         }
